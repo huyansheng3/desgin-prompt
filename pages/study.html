@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 学习</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .study-header {
+      margin-bottom: 20px;
+    }
+    
+    .study-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    
+    .study-tab {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: var(--light-text);
+      position: relative;
+    }
+    
+    .study-tab.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .study-tab.active:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 15%;
+      width: 70%;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 3px;
+    }
+    
+    .study-progress {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .progress-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .progress-percentage {
+      font-size: 14px;
+      color: var(--primary-color);
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background-color: var(--border-color);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background-color: var(--primary-color);
+      border-radius: 4px;
+      width: 35%;
+    }
+    
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .daily-task {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .task-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .task-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .task-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .task-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      color: var(--primary-color);
+    }
+    
+    .task-info {
+      flex: 1;
+    }
+    
+    .task-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .task-desc {
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .task-status {
+      font-size: 12px;
+      color: var(--primary-color);
+    }
+    
+    .task-status.completed {
+      color: #27ae60;
+    }
+    
+    .learning-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .learning-header {
+      height: 120px;
+      position: relative;
+    }
+    
+    .learning-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .learning-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 15px;
+      color: white;
+    }
+    
+    .learning-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .learning-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .learning-content {
+      padding: 15px;
+    }
+    
+    .learning-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    
+    .learning-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .learning-stat {
+      display: flex;
+      align-items: center;
+    }
+    
+    .learning-stat i {
+      margin-right: 5px;
+    }
+    
+    .review-section {
+      margin-bottom: 20px;
+    }
+    
+    .review-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .review-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .review-poem {
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .review-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .review-btn {
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.05);
+      color: var(--light-text);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .review-btn.primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .review-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #e74c3c;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">14:30</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <!-- 头部导航 -->
+      <div class="nav-header">
+        <div class="page-title">学习</div>
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      
+      <!-- 学习标签页 -->
+      <div class="study-tabs">
+        <div class="study-tab active">学习计划</div>
+        <div class="study-tab">复习</div>
+        <div class="study-tab">统计</div>
+      </div>
+      
+      <!-- 学习进度 -->
+      <div class="study-progress">
+        <div class="progress-title">
+          <span>学习进度</span>
+          <span class="progress-percentage">35%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <div class="progress-stats">
+          <span>已学习: 35首</span>
+          <span>总计: 100首</span>
+        </div>
+      </div>
+      
+      <!-- 每日任务 -->
+      <div class="daily-task">
+        <div class="task-title">今日任务</div>
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="task-info">
+              <div class="task-name">学习新诗词</div>
+              <div class="task-desc">每日学习1首新诗词</div>
+            </div>
+            <div class="task-status completed">已完成</div>
+          </li>
+          <li class="task-item">
+            <div class="task-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="task-info">
+              <div class="task-name">复习旧诗词</div>
+              <div class="task-desc">复习3首之前学过的诗词</div>
+            </div>
+            <div class="task-status">1/3</div>
+          </li>
+          <li class="task-item">
+            <div class="task-icon">
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="task-info">
+              <div class="task-name">诗词默写</div>
+              <div class="task-desc">默写1首学过的诗词</div>
+            </div>
+            <div class="task-status">0/1</div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 学习卡片 -->
+      <div class="learning-card">
+        <div class="learning-header">
+          <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="唐诗三百首">
+          <div class="learning-overlay">
+            <div class="learning-title">唐诗三百首</div>
+            <div class="learning-subtitle">经典必学</div>
+          </div>
+        </div>
+        <div class="learning-content">
+          <div class="learning-desc">
+            《唐诗三百首》是一部流传很广的唐诗选集，收录了唐代诗人的经典作品，包括李白、杜甫、王维等名家的代表作。
+          </div>
+          <div class="learning-stats">
+            <div class="learning-stat">
+              <i class="fas fa-book"></i>
+              <span>300首诗</span>
+            </div>
+            <div class="learning-stat">
+              <i class="fas fa-user"></i>
+              <span>77位诗人</span>
+            </div>
+            <div class="learning-stat">
+              <i class="fas fa-chart-line"></i>
+              <span>12%已学习</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="learning-card">
+        <div class="learning-header">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="宋词精选">
+          <div class="learning-overlay">
+            <div class="learning-title">宋词精选</div>
+            <div class="learning-subtitle">词中有情</div>
+          </div>
+        </div>
+        <div class="learning-content">
+          <div class="learning-desc">
+            精选宋代词人的代表作品，包括苏轼、李清照、辛弃疾等名家的经典词作，感受宋词的婉约与豪放。
+          </div>
+          <div class="learning-stats">
+            <div class="learning-stat">
+              <i class="fas fa-book"></i>
+              <span>150首词</span>
+            </div>
+            <div class="learning-stat">
+              <i class="fas fa-user"></i>
+              <span>35位词人</span>
+            </div>
+            <div class="learning-stat">
+              <i class="fas fa-chart-line"></i>
+              <span>5%已学习</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 待复习区域 -->
+      <div class="review-section">
+        <div class="review-title">待复习</div>
+        
+        <div class="review-card">
+          <div class="review-badge">今</div>
+          <div class="review-poem">
+            床前明月光，疑是地上霜。<br>
+            举头望明月，低头思故乡。
+          </div>
+          <div class="review-actions">
+            <button class="review-btn">稍后</button>
+            <button class="review-btn primary">开始复习</button>
+          </div>
+        </div>
+        
+        <div class="review-card">
+          <div class="review-poem">
+            白日依山尽，黄河入海流。<br>
+            欲穷千里目，更上一层楼。
+          </div>
+          <div class="review-actions">
+            <button class="review-btn">稍后</button>
+            <button class="review-btn primary">开始复习</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item active" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 诗词详情</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .poem-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    
+    .poem-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .poem-author {
+      font-size: 16px;
+      color: var(--light-text);
+      margin-bottom: 5px;
+    }
+    
+    .poem-dynasty {
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .poem-content {
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .poem-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+    
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--light-text);
+    }
+    
+    .action-btn i {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    
+    .action-btn.active {
+      color: var(--primary-color);
+    }
+    
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    
+    .translation-section,
+    .annotation-section,
+    .appreciation-section,
+    .author-section {
+      margin-bottom: 25px;
+    }
+    
+    .translation-content,
+    .annotation-content,
+    .appreciation-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+    
+    .author-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .author-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .author-period {
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .author-bio {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+    
+    .related-poems {
+      margin-bottom: 25px;
+    }
+    
+    .related-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+    
+    .related-item {
+      min-width: 150px;
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .related-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--primary-color);
+    }
+    
+    .related-author {
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .comment-section {
+      margin-bottom: 25px;
+    }
+    
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .comment-count {
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .comment-item {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    
+    .comment-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .comment-content {
+      flex: 1;
+    }
+    
+    .comment-user {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .comment-text {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 5px;
+    }
+    
+    .comment-time {
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .comment-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .back-btn {
+      position: absolute;
+      top: 54px;
+      left: 15px;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">14:30</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <!-- 返回按钮 -->
+      <a href="#" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      
+      <!-- 诗词头部 -->
+      <div class="poem-header">
+        <div class="poem-title">静夜思</div>
+        <div class="poem-author">李白</div>
+        <div class="poem-dynasty">唐代</div>
+      </div>
+      
+      <!-- 诗词内容 -->
+      <div class="poem-content">
+        床前明月光，<br>
+        疑是地上霜。<br>
+        举头望明月，<br>
+        低头思故乡。
+      </div>
+      
+      <!-- 操作按钮 -->
+      <div class="poem-actions">
+        <div class="action-btn">
+          <i class="far fa-heart"></i>
+          <span>收藏</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-volume-up"></i>
+          <span>朗读</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-copy"></i>
+          <span>复制</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-share-alt"></i>
+          <span>分享</span>
+        </div>
+      </div>
+      
+      <!-- 翻译 -->
+      <div class="translation-section">
+        <div class="section-title">译文</div>
+        <div class="translation-content">
+          夜深人静的时候，看见床前明亮的月光，疑心是地上的霜。抬头望着那轮明月，低头想念我的故乡。
+        </div>
+      </div>
+      
+      <!-- 注释 -->
+      <div class="annotation-section">
+        <div class="section-title">注释</div>
+        <div class="annotation-content">
+          <p>1. 床前：古代的床较大，一般是一个较大的台子，上面铺席，所以床前实际上是在屋内。</p>
+          <p>2. 疑是地上霜：怀疑是地上的霜，是说月光洒在地上，看起来像霜一样白。</p>
+          <p>3. 举头：抬起头来。</p>
+          <p>4. 低头：低下头。</p>
+        </div>
+      </div>
+      
+      <!-- 赏析 -->
+      <div class="appreciation-section">
+        <div class="section-title">赏析</div>
+        <div class="appreciation-content">
+          <p>这首诗是李白流传最广的名作之一，也是中国最著名的古诗之一。诗中描绘了一个游子在月夜思念故乡的情景，语言清新自然，意境优美，情感真挚。</p>
+          <p>诗的前两句写景，通过对月光洒在地面的描写，渲染出一种清冷、寂静的氛围。后两句则直接抒发思乡之情，由景入情，自然流畅。</p>
+          <p>全诗虽然只有短短二十字，却意境深远，将游子思乡的普遍情感表达得淋漓尽致，因此千百年来广为传诵。</p>
+        </div>
+      </div>
+      
+      <!-- 作者信息 -->
+      <div class="author-section">
+        <div class="section-title">作者简介</div>
+        <div class="author-info">
+          <img src="https://images.unsplash.com/photo-1566616213894-2d4e1baee5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="李白" class="author-avatar">
+          <div>
+            <div class="author-name">李白</div>
+            <div class="author-period">701年-762年</div>
+          </div>
+        </div>
+        <div class="author-bio">
+          李白（701年-762年），字太白，号青莲居士，唐代伟大的浪漫主义诗人，被后人誉为"诗仙"。他的诗歌想象丰富，语言瑰丽，音律优美，意境高远，在中国文学史上占有重要地位。一生创作诗歌近千首，代表作有《蜀道难》《将进酒》《行路难","梦游天姥吟留别》等。
+        </div>
+      </div>
+      
+      <!-- 相关诗词 -->
+      <div class="related-poems">
+        <div class="section-title">相关诗词</div>
+        <div class="related-list">
+          <div class="related-item">
+            <div class="related-title">夜思</div>
+            <div class="related-author">杜甫</div>
+          </div>
+          <div class="related-item">
+            <div class="related-title">月下独酌</div>
+            <div class="related-author">李白</div>
+          </div>
+          <div class="related-item">
+            <div class="related-title">望月怀远</div>
+            <div class="related-author">张九龄</div>
+          </div>
+          <div class="related-item">
+            <div class="related-title">春夜喜雨</div>
+            <div class="related-author">杜甫</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 评论区 -->
+      <div class="comment-section">
+        <div class="comment-header">
+          <div class="section-title">评论</div>
+          <div class="comment-count">24条评论</div>
+        </div>
+        
+        <div class="comment-item">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="用户头像" class="comment-avatar">
+          <div class="comment-content">
+            <div class="comment-user">诗词爱好者</div>
+            <div class="comment-text">这首诗真的很美，每次读都有不同的感受。特别是"举头望明月，低头思故乡"这两句，写得太传神了！</div>
+            <div class="comment-time">2小时前</div>
+            <div class="comment-actions">
+              <span><i class="far fa-thumbs-up"></i> 12</span>
+              <span><i class="far fa-comment"></i> 回复</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comment-item">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="用户头像" class="comment-avatar">
+          <div class="comment-content">
+            <div class="comment-user">月下独酌</div>
+            <div class="comment-text">李白的诗总是那么直白却又意境深远，这首《静夜思》更是经典中的经典。</div>
+            <div class="comment-time">5小时前</div>
+            <div class="comment-actions">
+              <span><i class="far fa-thumbs-up"></i> 8</span>
+              <span><i class="far fa-comment"></i> 回复</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html> 

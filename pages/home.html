@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 首页</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .banner {
+      height: 150px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .banner-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+    }
+    
+    .banner-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    
+    .banner-subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .section-title .more {
+      font-size: 12px;
+      color: var(--primary-color);
+      font-weight: normal;
+    }
+    
+    .poem-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+    
+    .action-btn {
+      color: var(--light-text);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .action-btn i {
+      margin-right: 3px;
+    }
+    
+    .favorite-btn.active {
+      color: #e74c3c;
+    }
+    
+    .poem-card {
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+    
+    .poem-title {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .poem-author {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    
+    .poem-content {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .category-tags {
+      margin-bottom: 15px;
+    }
+    
+    .tag {
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">18:33</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <!-- 头部导航 -->
+      <div class="nav-header">
+        <div class="page-title">古诗词</div>
+        <i class="fas fa-bell"></i>
+      </div>
+      
+      <!-- 每日推荐 Banner -->
+      <div class="banner">
+        <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="每日推荐">
+        <div class="banner-text">
+          <div class="banner-title">每日一诗：《静夜思》</div>
+          <div class="banner-subtitle">唐代 · 李白</div>
+        </div>
+      </div>
+      
+      <!-- 分类标签 -->
+      <div class="category-tags">
+        <div class="tag">唐诗</div>
+        <div class="tag">宋词</div>
+        <div class="tag">元曲</div>
+        <div class="tag">诗经</div>
+        <div class="tag">楚辞</div>
+      </div>
+      
+      <!-- 热门推荐 -->
+      <div class="section-title">
+        <span>热门推荐</span>
+        <span class="more">查看更多 <i class="fas fa-chevron-right"></i></span>
+      </div>
+      
+      <!-- 诗词卡片 -->
+      <div class="poem-card">
+        <div class="poem-title">春晓</div>
+        <div class="poem-author">唐代 · 孟浩然</div>
+        <div class="poem-content">
+          春眠不觉晓，<br>
+          处处闻啼鸟。<br>
+          夜来风雨声，<br>
+          花落知多少。
+        </div>
+        <div class="poem-actions">
+          <div class="action-btn favorite-btn">
+            <i class="far fa-heart"></i>
+            <span>收藏</span>
+          </div>
+          <div class="action-btn">
+            <i class="far fa-comment"></i>
+            <span>评论 (12)</span>
+          </div>
+          <div class="action-btn">
+            <i class="fas fa-share-alt"></i>
+            <span>分享</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="poem-card">
+        <div class="poem-title">登鹳雀楼</div>
+        <div class="poem-author">唐代 · 王之涣</div>
+        <div class="poem-content">
+          白日依山尽，<br>
+          黄河入海流。<br>
+          欲穷千里目，<br>
+          更上一层楼。
+        </div>
+        <div class="poem-actions">
+          <div class="action-btn favorite-btn">
+            <i class="far fa-heart"></i>
+            <span>收藏</span>
+          </div>
+          <div class="action-btn">
+            <i class="far fa-comment"></i>
+            <span>评论 (8)</span>
+          </div>
+          <div class="action-btn">
+            <i class="fas fa-share-alt"></i>
+            <span>分享</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 猜你喜欢 -->
+      <div class="section-title">
+        <span>猜你喜欢</span>
+        <span class="more">查看更多 <i class="fas fa-chevron-right"></i></span>
+      </div>
+      
+      <div class="poem-card">
+        <div class="poem-title">相思</div>
+        <div class="poem-author">唐代 · 王维</div>
+        <div class="poem-content">
+          红豆生南国，<br>
+          春来发几枝。<br>
+          愿君多采撷，<br>
+          此物最相思。
+        </div>
+        <div class="poem-actions">
+          <div class="action-btn favorite-btn">
+            <i class="far fa-heart"></i>
+            <span>收藏</span>
+          </div>
+          <div class="action-btn">
+            <i class="far fa-comment"></i>
+            <span>评论 (5)</span>
+          </div>
+          <div class="action-btn">
+            <i class="fas fa-share-alt"></i>
+            <span>分享</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item active" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html> 

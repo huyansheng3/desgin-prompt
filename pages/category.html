@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 分类</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .category-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 15px;
+    }
+    
+    .category-tab {
+      padding: 8px 12px;
+      font-size: 14px;
+      color: var(--light-text);
+      position: relative;
+    }
+    
+    .category-tab.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .category-tab.active:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 15%;
+      width: 70%;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 3px;
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .category-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      height: 120px;
+    }
+    
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .category-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 15px;
+      color: white;
+    }
+    
+    .category-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .category-count {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    
+    .dynasty-list {
+      margin-top: 15px;
+    }
+    
+    .dynasty-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background-color: var(--card-background);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .dynasty-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .dynasty-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      color: var(--primary-color);
+    }
+    
+    .dynasty-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    .dynasty-period {
+      font-size: 12px;
+      color: var(--light-text);
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">14:30</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <!-- 头部导航 -->
+      <div class="nav-header">
+        <div class="page-title">分类浏览</div>
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+      
+      <!-- 分类标签页 -->
+      <div class="category-tabs">
+        <div class="category-tab active">朝代</div>
+        <div class="category-tab">作者</div>
+        <div class="category-tab">主题</div>
+        <div class="category-tab">形式</div>
+      </div>
+      
+      <!-- 朝代分类 -->
+      <div class="dynasty-list">
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">先秦</div>
+              <div class="dynasty-period">公元前1600年 - 公元前221年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">汉代</div>
+              <div class="dynasty-period">公元前202年 - 公元220年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">唐代</div>
+              <div class="dynasty-period">618年 - 907年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">宋代</div>
+              <div class="dynasty-period">960年 - 1279年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">元代</div>
+              <div class="dynasty-period">1271年 - 1368年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">明代</div>
+              <div class="dynasty-period">1368年 - 1644年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dynasty-item">
+          <div class="dynasty-info">
+            <div class="dynasty-icon">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <div>
+              <div class="dynasty-name">清代</div>
+              <div class="dynasty-period">1644年 - 1912年</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item active" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html> 

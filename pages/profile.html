@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 个人中心</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .profile-header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      color: white;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 20px;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      margin-right: 15px;
+    }
+    
+    .user-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .user-level {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .user-stats {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    
+    .profile-section {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .section-title {
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    
+    .menu-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      color: var(--primary-color);
+    }
+    
+    .menu-text {
+      flex: 1;
+      font-size: 16px;
+    }
+    
+    .menu-arrow {
+      color: var(--light-text);
+    }
+    
+    .badge {
+      background-color: #e74c3c;
+      color: white;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+    
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 15px;
+    }
+    
+    .achievement-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .achievement-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+      font-size: 20px;
+    }
+    
+    .achievement-icon.locked {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: var(--light-text);
+    }
+    
+    .achievement-name {
+      font-size: 12px;
+      color: var(--text-color);
+      margin-bottom: 3px;
+    }
+    
+    .achievement-desc {
+      font-size: 10px;
+      color: var(--light-text);
+    }
+    
+    .collection-list {
+      display: flex;
+      overflow-x: auto;
+      padding: 15px;
+      gap: 15px;
+    }
+    
+    .collection-item {
+      min-width: 120px;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    .collection-icon {
+      font-size: 24px;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .collection-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .collection-count {
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    .logout-btn {
+      display: block;
+      width: calc(100% - 30px);
+      margin: 20px 15px;
+      padding: 12px 0;
+      background-color: #f5f5f5;
+      color: #e74c3c;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">14:30</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <!-- 个人信息头部 -->
+      <div class="profile-header">
+        <div class="user-info">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="用户头像" class="avatar">
+          <div>
+            <div class="user-name">诗词爱好者</div>
+            <div class="user-level">Lv.5 诗词初学者</div>
+          </div>
+        </div>
+        
+        <div class="user-stats">
+          <div class="stat-item">
+            <div class="stat-number">35</div>
+            <div class="stat-label">已学诗词</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">12</div>
+            <div class="stat-label">收藏诗词</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">学习天数</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 我的收藏 -->
+      <div class="profile-section">
+        <div class="section-title">我的收藏</div>
+        <div class="collection-list">
+          <div class="collection-item">
+            <div class="collection-icon">
+              <i class="fas fa-bookmark"></i>
+            </div>
+            <div class="collection-name">唐诗</div>
+            <div class="collection-count">8首</div>
+          </div>
+          <div class="collection-item">
+            <div class="collection-icon">
+              <i class="fas fa-bookmark"></i>
+            </div>
+            <div class="collection-name">宋词</div>
+            <div class="collection-count">3首</div>
+          </div>
+          <div class="collection-item">
+            <div class="collection-icon">
+              <i class="fas fa-bookmark"></i>
+            </div>
+            <div class="collection-name">元曲</div>
+            <div class="collection-count">1首</div>
+          </div>
+          <div class="collection-item">
+            <div class="collection-icon">
+              <i class="fas fa-plus"></i>
+            </div>
+            <div class="collection-name">新建收藏</div>
+            <div class="collection-count"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 我的成就 -->
+      <div class="profile-section">
+        <div class="section-title">我的成就</div>
+        <div class="achievement-grid">
+          <div class="achievement-item">
+            <div class="achievement-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="achievement-name">初学乍练</div>
+            <div class="achievement-desc">学习10首诗词</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="achievement-name">坚持不懈</div>
+            <div class="achievement-desc">连续学习7天</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon locked">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="achievement-name">诗词达人</div>
+            <div class="achievement-desc">学习50首诗词</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon locked">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="achievement-name">博学多才</div>
+            <div class="achievement-desc">学习100首诗词</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 功能菜单 -->
+      <div class="profile-section">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-history"></i>
+            </div>
+            <div class="menu-text">学习记录</div>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="menu-text">我的收藏</div>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+            <div class="menu-text">消息通知</div>
+            <span class="badge">2</span>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="menu-text">设置</div>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="menu-text">帮助与反馈</div>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="menu-text">关于我们</div>
+            <div class="menu-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 退出登录按钮 -->
+      <button class="logout-btn">退出登录</button>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item active" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词 - 搜索</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .search-container {
+      padding-top: 10px;
+    }
+    
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    
+    .search-history {
+      margin-bottom: 25px;
+    }
+    
+    .history-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+    
+    .history-title .clear {
+      color: var(--primary-color);
+      font-size: 14px;
+    }
+    
+    .history-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .history-tag {
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--light-text);
+      display: flex;
+      align-items: center;
+    }
+    
+    .history-tag i {
+      margin-right: 5px;
+      font-size: 12px;
+    }
+    
+    .hot-searches {
+      margin-bottom: 25px;
+    }
+    
+    .hot-title {
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+    
+    .hot-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .hot-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .hot-rank {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .hot-rank.top {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .hot-keyword {
+      flex: 1;
+      font-size: 16px;
+    }
+    
+    .hot-count {
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .search-results {
+      display: none; /* 默认隐藏搜索结果 */
+    }
+    
+    .result-stats {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: var(--light-text);
+    }
+    
+    .filter-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    
+    .filter-tab {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: var(--light-text);
+      position: relative;
+    }
+    
+    .filter-tab.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .filter-tab.active:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="time">14:30</div>
+      <div class="icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+      <div class="search-container">
+        <!-- 搜索框 -->
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="搜索诗词、作者、名句...">
+        </div>
+        
+        <!-- 搜索历史 -->
+        <div class="search-history">
+          <div class="history-title">
+            <span>搜索历史</span>
+            <span class="clear">清空</span>
+          </div>
+          <div class="history-tags">
+            <div class="history-tag">
+              <i class="fas fa-history"></i>
+              <span>李白</span>
+            </div>
+            <div class="history-tag">
+              <i class="fas fa-history"></i>
+              <span>静夜思</span>
+            </div>
+            <div class="history-tag">
+              <i class="fas fa-history"></i>
+              <span>春江花月夜</span>
+            </div>
+            <div class="history-tag">
+              <i class="fas fa-history"></i>
+              <span>杜甫</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 热门搜索 -->
+        <div class="hot-searches">
+          <div class="hot-title">热门搜索</div>
+          <ul class="hot-list">
+            <li class="hot-item">
+              <div class="hot-rank top">1</div>
+              <div class="hot-keyword">李白</div>
+              <div class="hot-count">12.5万</div>
+            </li>
+            <li class="hot-item">
+              <div class="hot-rank top">2</div>
+              <div class="hot-keyword">静夜思</div>
+              <div class="hot-count">10.2万</div>
+            </li>
+            <li class="hot-item">
+              <div class="hot-rank top">3</div>
+              <div class="hot-keyword">杜甫</div>
+              <div class="hot-count">8.7万</div>
+            </li>
+            <li class="hot-item">
+              <div class="hot-rank">4</div>
+              <div class="hot-keyword">春江花月夜</div>
+              <div class="hot-count">7.3万</div>
+            </li>
+            <li class="hot-item">
+              <div class="hot-rank">5</div>
+              <div class="hot-keyword">苏轼</div>
+              <div class="hot-count">6.8万</div>
+            </li>
+            <li class="hot-item">
+              <div class="hot-rank">6</div>
+              <div class="hot-keyword">唐诗三百首</div>
+              <div class="hot-count">5.4万</div>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 搜索结果（默认隐藏） -->
+        <div class="search-results">
+          <div class="result-stats">找到 36 条结果</div>
+          
+          <div class="filter-tabs">
+            <div class="filter-tab active">全部</div>
+            <div class="filter-tab">诗词</div>
+            <div class="filter-tab">作者</div>
+            <div class="filter-tab">名句</div>
+          </div>
+          
+          <!-- 搜索结果列表 -->
+          <div class="poem-card">
+            <div class="poem-title">静夜思</div>
+            <div class="poem-author">唐代 · 李白</div>
+            <div class="poem-content">
+              床前明月光，<br>
+              疑是地上霜。<br>
+              举头望明月，<br>
+              低头思故乡。
+            </div>
+            <div class="poem-actions">
+              <div class="action-btn favorite-btn">
+                <i class="far fa-heart"></i>
+                <span>收藏</span>
+              </div>
+              <div class="action-btn">
+                <i class="far fa-comment"></i>
+                <span>评论 (24)</span>
+              </div>
+              <div class="action-btn">
+                <i class="fas fa-share-alt"></i>
+                <span>分享</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="poem-card">
+            <div class="poem-title">夜思</div>
+            <div class="poem-author">唐代 · 杜甫</div>
+            <div class="poem-content">
+              星垂平野阔，<br>
+              月涌大江流。<br>
+              名岂文章著，<br>
+              官应老病休。<br>
+              飘飘何所似，<br>
+              天地一沙鸥。
+            </div>
+            <div class="poem-actions">
+              <div class="action-btn favorite-btn">
+                <i class="far fa-heart"></i>
+                <span>收藏</span>
+              </div>
+              <div class="action-btn">
+                <i class="far fa-comment"></i>
+                <span>评论 (8)</span>
+              </div>
+              <div class="action-btn">
+                <i class="fas fa-share-alt"></i>
+                <span>分享</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item" data-tab="category">
+        <i class="fas fa-th-large"></i>
+        <span>分类</span>
+      </div>
+      <div class="tab-item active" data-tab="search">
+        <i class="fas fa-search"></i>
+        <span>搜索</span>
+      </div>
+      <div class="tab-item" data-tab="study">
+        <i class="fas fa-book"></i>
+        <span>学习</span>
+      </div>
+      <div class="tab-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/main.js"></script>
+  <script>
+    // 搜索功能演示
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('.search-bar input');
+      const searchHistory = document.querySelector('.search-history');
+      const hotSearches = document.querySelector('.hot-searches');
+      const searchResults = document.querySelector('.search-results');
+      
+      searchInput.addEventListener('focus', function() {
+        // 显示历史和热门搜索
+        searchHistory.style.display = 'block';
+        hotSearches.style.display = 'block';
+        searchResults.style.display = 'none';
+      });
+      
+      searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter' && this.value.trim() !== '') {
+          // 隐藏历史和热门搜索，显示搜索结果
+          searchHistory.style.display = 'none';
+          hotSearches.style.display = 'none';
+          searchResults.style.display = 'block';
+        }
+      });
+      
+      // 点击历史标签
+      const historyTags = document.querySelectorAll('.history-tag');
+      historyTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          const keyword = this.querySelector('span').textContent;
+          searchInput.value = keyword;
+          
+          // 隐藏历史和热门搜索，显示搜索结果
+          searchHistory.style.display = 'none';
+          hotSearches.style.display = 'none';
+          searchResults.style.display = 'block';
+        });
+      });
+      
+      // 点击热门搜索项
+      const hotItems = document.querySelectorAll('.hot-item');
+      hotItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const keyword = this.querySelector('.hot-keyword').textContent;
+          searchInput.value = keyword;
+          
+          // 隐藏历史和热门搜索，显示搜索结果
+          searchHistory.style.display = 'none';
+          hotSearches.style.display = 'none';
+          searchResults.style.display = 'block';
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
