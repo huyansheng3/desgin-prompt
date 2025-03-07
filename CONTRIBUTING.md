@@ -37,8 +37,8 @@
 
 1. 克隆仓库
    ```bash
-   git clone https://github.com/your-username/ancient-poetry-app.git
-   cd ancient-poetry-app
+   git clone https://github.com/your-username/desgin-prompt.git
+   cd desgin-prompt
    ```
 
 2. 在浏览器中打开 `index.html` 文件

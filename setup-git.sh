@@ -17,17 +17,17 @@ fi
 
 # 询问GitHub用户名和仓库名
 read -p "请输入你的GitHub用户名: " username
-read -p "请输入仓库名 (默认: ancient-poetry-app): " repo_name
-repo_name=${repo_name:-ancient-poetry-app}
+read -p "请输入仓库名 (默认: desgin-prompt): " repo_name
+repo_name=${repo_name:-desgin-prompt}
 
 # 更新文件中的用户名和仓库名
 echo "更新文件中的GitHub链接..."
 sed -i '' "s|your-username|$username|g" README.md
 sed -i '' "s|your-username|$username|g" index.html
-sed -i '' "s|ancient-poetry-app|$repo_name|g" README.md
-sed -i '' "s|ancient-poetry-app|$repo_name|g" index.html
+sed -i '' "s|desgin-prompt|$repo_name|g" README.md
+sed -i '' "s|desgin-prompt|$repo_name|g" index.html
 sed -i '' "s|your-username|$username|g" DEPLOY.md
-sed -i '' "s|ancient-poetry-app|$repo_name|g" DEPLOY.md
+sed -i '' "s|desgin-prompt|$repo_name|g" DEPLOY.md
 
 # 添加所有文件到Git
 echo "添加文件到Git..."

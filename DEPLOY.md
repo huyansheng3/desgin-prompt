@@ -2,14 +2,12 @@
 
 本文档提供了如何将古诗词应用原型部署到GitHub Pages的详细步骤。
 
-## 自动部署（推荐）
-
-本项目已配置GitHub Actions工作流，可以自动部署到GitHub Pages。
+## 手动部署
 
 ### 步骤：
 
 1. **Fork或克隆此仓库**
-   - 访问 [https://github.com/your-username/ancient-poetry-app](https://github.com/your-username/ancient-poetry-app)
+   - 访问 [https://github.com/your-username/desgin-prompt](https://github.com/your-username/desgin-prompt)
    - 点击右上角的"Fork"按钮创建你自己的副本
 
 2. **修改配置**
@@ -21,49 +19,12 @@
 3. **启用GitHub Pages**
    - 进入你的仓库设置（Settings）
    - 滚动到"Pages"部分
-   - 在"Source"下拉菜单中选择"gh-pages"分支
+   - 在"Source"下拉菜单中选择"main"分支
    - 点击"Save"
-
-4. **触发部署**
-   - 推送任何更改到main分支，或者
-   - 在GitHub仓库的"Actions"标签页中手动运行工作流
 
 5. **访问你的网站**
    - 部署完成后，你可以通过以下URL访问你的网站：
-   - `https://your-username.github.io/ancient-poetry-app/`
-
-## 手动部署
-
-如果你不想使用GitHub Actions，也可以手动部署：
-
-1. **克隆仓库**
-   ```bash
-   git clone https://github.com/your-username/ancient-poetry-app.git
-   cd ancient-poetry-app
-   ```
-
-2. **创建gh-pages分支**
-   ```bash
-   git checkout --orphan gh-pages
-   ```
-
-3. **添加所有文件**
-   ```bash
-   git add .
-   ```
-
-4. **提交更改**
-   ```bash
-   git commit -m "Deploy to GitHub Pages"
-   ```
-
-5. **推送到GitHub**
-   ```bash
-   git push origin gh-pages
-   ```
-
-6. **在仓库设置中启用GitHub Pages**
-   - 选择gh-pages分支作为源
+   - `https://your-username.github.io/desgin-prompt/`
 
 ## 自定义域名（可选）
 
