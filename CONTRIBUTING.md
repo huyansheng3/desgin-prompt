@@ -37,7 +37,7 @@
 
 1. 克隆仓库
    ```bash
-   git clone https://github.com/your-username/desgin-prompt.git
+   git clone https://github.com/huyansheng3/desgin-prompt
    cd desgin-prompt
    ```
 
