@@ -2,6 +2,10 @@
 
 这是一个古诗词学习应用的高保真原型设计，使用HTML、CSS和JavaScript实现。
 
+## 在线预览
+
+👉 [点击这里查看在线演示](https://your-username.github.io/ancient-poetry-app/)
+
 ## 项目概述
 
 本项目是一个古诗词学习应用的UI原型，旨在提供一个美观、实用的界面设计，帮助用户学习和欣赏中国古诗词。应用包含以下主要功能：
@@ -52,6 +56,16 @@
 1. 克隆或下载本项目
 2. 在浏览器中打开 `index.html` 文件
 3. 查看各个界面的设计和交互
+
+## 部署到GitHub Pages
+
+本项目已配置自动部署到GitHub Pages。当代码推送到main分支时，GitHub Actions会自动将项目部署到GitHub Pages。
+
+手动部署步骤：
+1. Fork或克隆此仓库
+2. 修改`.github/workflows/deploy.yml`文件中的配置（如需要）
+3. 推送到你的GitHub仓库
+4. 在仓库设置中启用GitHub Pages，选择gh-pages分支作为源
 
 ## 设计特点
 
